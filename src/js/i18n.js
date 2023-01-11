@@ -121,7 +121,7 @@ const tranTxt = {
         'about-author': '关于作者',
         'dplayer-feedback': '播放器意见反馈',
         'about-dplayer': '关于 DPlayer 播放器',
-        loop: '洗脑循环',
+        loop: '循环播放',
         speed: '速度',
         'opacity-danmaku': '弹幕透明度',
         normal: '正常',

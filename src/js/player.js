@@ -506,7 +506,7 @@ class DPlayer {
                 // Not a video load error, may be poster load failed, see #307
                 return;
             }
-            this.tran && this.notice && this.type !== 'webtorrent' && this.notice(this.tran('video-failed'), -1);
+            // this.tran && this.notice && this.type !== 'webtorrent' && this.notice(this.tran('video-failed'), -1);
         });
 
         // video end
@@ -656,6 +656,15 @@ class DPlayer {
                 time
             );
         }
+    }
+
+    cleanNotice() {
+        // 清理所有通知
+        const noticeList = this.template.noticeList;
+        Array.from(noticeList.childNodes).forEach((notice) => {
+            noticeList.removeChild(notice);
+        });
+        this.events.trigger('notice_clean');
     }
 
     resize() {
