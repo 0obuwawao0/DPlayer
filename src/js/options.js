@@ -50,7 +50,7 @@ export default (options) => {
         options.lang = options.lang.toLowerCase();
     }
 
-    options.contextmenu = options.contextmenu.concat([
+    /* options.contextmenu = options.contextmenu.concat([
         {
             key: 'video-info',
             click: (player) => {
@@ -65,7 +65,7 @@ export default (options) => {
             text: `DPlayer v${DPLAYER_VERSION}`,
             link: 'https://github.com/MoePlayer/DPlayer',
         },
-    ]);
+    ]); */
 
     return options;
 };

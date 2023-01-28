@@ -332,6 +332,8 @@ class DPlayer {
      */
     switchVideo(video, danmakuAPI) {
         this.pause();
+        //切换视频时将旧时间清理掉
+        //this.template.dtime.innerHTML = utils.secondToTime();
         this.video.poster = video.pic ? video.pic : '';
         this.video.src = video.url;
         this.initMSE(this.video, video.type || 'auto');
@@ -658,10 +660,10 @@ class DPlayer {
         }
     }
 
-    cleanNotice() {
+    clearNotice() {
         // 清理所有通知
         const noticeList = this.template.noticeList;
-        Array.from(noticeList.childNodes).forEach((notice) => {
+        Array.prototype.slice.call(noticeList.childNodes).forEach((notice) => {
             noticeList.removeChild(notice);
         });
         this.events.trigger('notice_clean');

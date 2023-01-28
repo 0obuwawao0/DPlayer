@@ -13,14 +13,17 @@ class ContextMenu {
         });
 
         this.contextmenuHandler = (e) => {
+            //将事件终止前提，保持一致阻止浏览器右键
+            const event = e || window.event;
+            event.preventDefault();
+            if (!this.player.options.contextmenu.length) {
+                //如果有菜单在处理显示
+                return;
+            }
             if (this.shown) {
                 this.hide();
                 return;
             }
-
-            const event = e || window.event;
-            event.preventDefault();
-
             const clientRect = this.player.container.getBoundingClientRect();
             this.show(event.clientX - clientRect.left, event.clientY - clientRect.top);
 
@@ -28,12 +31,14 @@ class ContextMenu {
                 this.hide();
             });
         };
+
         this.player.container.addEventListener('contextmenu', this.contextmenuHandler);
+
+
     }
 
     show(x, y) {
         this.player.template.menu.classList.add('dplayer-menu-show');
-
         const clientRect = this.player.container.getBoundingClientRect();
         if (x + this.player.template.menu.offsetWidth >= clientRect.width) {
             this.player.template.menu.style.right = clientRect.width - x + 'px';
