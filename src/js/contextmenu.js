@@ -13,11 +13,11 @@ class ContextMenu {
         });
 
         this.contextmenuHandler = (e) => {
-            //将事件终止前提，保持一致阻止浏览器右键
+            // 将事件终止前提，保持一致阻止浏览器右键
             const event = e || window.event;
             event.preventDefault();
             if (!this.player.options.contextmenu.length) {
-                //如果有菜单在处理显示
+                // 如果有菜单在处理显示
                 return;
             }
             if (this.shown) {
